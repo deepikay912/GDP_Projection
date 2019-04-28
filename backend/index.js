@@ -32,19 +32,26 @@ var options = {
 var request = http.request(options, function (res) {
 
       var data = '';
+
       console.log('in http request');
-        console.log(res);
-            
+    
     res.on('data', function (chunk) {
         data += chunk;
     });
     res.on('end', function () {
-        console.log(data);
 
-        response.json({
-          data1: data
-          });
-      
+        const dataa = JSON.parse(data)[1];
+
+        var result = [];
+        for (var d in dataa) {
+          result.push({value: parseInt(dataa[d].value), date: parseInt(dataa[d].date)});
+      }
+
+
+        response.send(result);
+
+// res.contentType('application/json');
+// res.send(JSON.stringify(result));
       response.end();
 
     });
@@ -59,25 +66,25 @@ request.end();
 
 });
 
-async function getData1() {
-  const response = await fetch('http://api.worldbank.org/countries/USA/indicators/NY.GDP.MKTP.CD?per_page=5000&format=json');
-  const json = await response.json();
+// async function getData1() {
+//   const response = await fetch('http://api.worldbank.org/countries/USA/indicators/NY.GDP.MKTP.CD?per_page=5000&format=json');
+//   const json = await response.json();
   
-  console.log(json[0]);
-}
+//   console.log(json[0]);
+// }
 
-const getData = new Promise((resolve, reject) => {
-  const res = fetch('http://api.worldbank.org/countries/USA/indicators/NY.GDP.MKTP.CD?per_page=5000&format=json');
-  const json =  res.json();
-  console.log(json[0]);
-  resolve(json);
-});
+// const getData = new Promise((resolve, reject) => {
+//   const res = fetch('http://api.worldbank.org/countries/USA/indicators/NY.GDP.MKTP.CD?per_page=5000&format=json');
+//   const json =  res.json();
+//   console.log(json[0]);
+//   resolve(json);
+// });
 
-app.get('/',function(req,res) {
-getData.then((response)=> {
-  res.end(response);
-})
-})
+// app.get('/',function(req,res) {
+// getData.then((response)=> {
+//   res.end(response);
+// })
+// })
 
 
 
