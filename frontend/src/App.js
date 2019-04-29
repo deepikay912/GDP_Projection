@@ -51,6 +51,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <h3 align="center"> United States GDP Annual Growth Rate</h3>
         <BarChart data={this.state.data} width={this.state.width} height={this.state.height} />
       </div>
     );

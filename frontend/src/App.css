@@ -31,3 +31,12 @@
     transform: rotate(360deg);
   }
 }
+
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
