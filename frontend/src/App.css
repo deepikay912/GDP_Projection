@@ -34,9 +34,32 @@
 
 
 .bar {
-  fill: steelblue;
+  fill:purple;
 }
 
 .bar:hover {
-  fill: brown;
+  fill: pink;
 }
+
+.bar-label{
+  fill: #000;
+  text-anchor: middle;
+  font-size: 8px;
+  font-weight : bold;
+}
+
+/* .tab {
+  margin-top: 100px;
+} */
+
+.barchart {
+  margin: 0;
+  padding: 0;
+  width: 660px;
+  margin-top: 0;
+  
+  position: fixed;
+  height: 100%;
+}
+
+
